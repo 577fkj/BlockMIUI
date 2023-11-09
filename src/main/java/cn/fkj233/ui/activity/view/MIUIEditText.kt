@@ -12,7 +12,7 @@ import cn.fkj233.ui.activity.dp2px
 class MIUIEditText(context: Context) : EditText(context) {
     init {
         this.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).also {
-            it.setMargins(dp2px(context, 30f), dp2px(context, 10f), dp2px(context, 30f), 0)
+            it.setMargins(dp2px(context, 25f), dp2px(context, 10f), dp2px(context, 25f), 0)
         }
         this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         this.setTextColor(context.getColor(R.color.whiteText))
