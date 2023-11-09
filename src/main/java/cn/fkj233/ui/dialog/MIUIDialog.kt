@@ -132,7 +132,7 @@ class MIUIDialog(context: Context, private val newStyle: Boolean = true, val bui
                 linearLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).also {
                     it.gravity = Gravity.CENTER_HORIZONTAL
                 }
-                linearLayout.setPadding(0, dp2px(context, 16f), 0, dp2px(context, 35f))
+                linearLayout.setPadding(0, dp2px(context, 16f), 0, dp2px(context, 24f))
                 linearLayout.addView(lButton)
                 linearLayout.addView(rButton)
             })
@@ -144,10 +144,10 @@ class MIUIDialog(context: Context, private val newStyle: Boolean = true, val bui
         setContentView(root)
         window?.setBackgroundDrawable(GradientDrawable().apply {
             if (newStyle) {
-                cornerRadius = dp2px(context, 30f).toFloat()
+                cornerRadius = dp2px(context, 32f).toFloat()
             } else {
-                val dp30 = dp2px(context, 30f).toFloat()
-                cornerRadii = floatArrayOf(dp30, dp30, dp30, dp30, 0f, 0f, 0f, 0f)
+                val dp32 = dp2px(context, 32f).toFloat()
+                cornerRadii = floatArrayOf(dp32, dp32, dp32, dp32, 0f, 0f, 0f, 0f)
             }
             setColor(context.getColor(R.color.dialog_background))
         })
@@ -238,22 +238,22 @@ class MIUIDialog(context: Context, private val newStyle: Boolean = true, val bui
         window!!.setWindowAnimations(R.style.DialogAnim)
         if (rButton.visibility == View.VISIBLE && lButton.visibility == View.VISIBLE) {
             if (isRtl(context)) {
-                (rButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 30f), 0, dp2px(context, 5f), 0)
-                (lButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 5f), 0, dp2px(context, 30f), 0)
+                (rButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 24f), 0, dp2px(context, 5f), 0)
+                (lButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 5f), 0, dp2px(context, 24f), 0)
             } else {
-                (rButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 5f), 0, dp2px(context, 30f), 0)
-                (lButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 30f), 0, dp2px(context, 5f), 0)
+                (rButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 5f), 0, dp2px(context, 24f), 0)
+                (lButton.layoutParams as LinearLayout.LayoutParams).setMargins(dp2px(context, 24f), 0, dp2px(context, 5f), 0)
             }
         }
         super.show()
         val layoutParams = window!!.attributes
-        layoutParams.dimAmount = 0.5F
+        layoutParams.dimAmount = 0.3F
         if (newStyle) {
             val resources = context.resources
             val dm: DisplayMetrics = resources.displayMetrics
             val width = dm.widthPixels
-            layoutParams.width = (width * 0.92f).roundToInt()
-            layoutParams.y = (width * 0.045f).roundToInt()
+            layoutParams.width = (width * 0.94f).roundToInt()
+            layoutParams.y = (width * 0.03f).roundToInt()
         } else {
             layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
         }
