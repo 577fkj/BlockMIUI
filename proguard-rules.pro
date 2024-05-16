@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class cn.fkj233.** {*;}
+-keep class cn.fkj233.ui.activity.data.** { *; }
