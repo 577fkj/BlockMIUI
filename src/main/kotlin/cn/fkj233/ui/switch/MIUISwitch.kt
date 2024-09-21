@@ -20,6 +20,6 @@ class MIUISwitch(context: Context) : Switch(context) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val mSwitchWidth: Field = Switch::class.java.getDeclaredField("mSwitchWidth")
         mSwitchWidth.isAccessible = true
-        mSwitchWidth.setInt(this, dp2px(context, 51f))
+        mSwitchWidth.setInt(this, dp2px(context, 53f))
     }
 }

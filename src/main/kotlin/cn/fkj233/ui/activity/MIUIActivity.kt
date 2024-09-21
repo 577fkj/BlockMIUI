@@ -90,7 +90,7 @@ open class MIUIActivity : Activity() {
             background = getDrawable(R.drawable.abc_ic_ab_back_material)
             visibility = View.GONE
             setOnClickListener {
-                this@MIUIActivity.finishAfterTransition()
+                this@MIUIActivity.onBackPressed()
             }
         }
     }
@@ -407,7 +407,8 @@ open class MIUIActivity : Activity() {
         this.callbacks = callbacks
     }
 
-    override fun finishAfterTransition() {
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
         if (fragmentManager.backStackEntryCount <= 1) {
             if (isExit) {
                 finishAndRemoveTask()
