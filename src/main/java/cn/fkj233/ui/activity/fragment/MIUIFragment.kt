@@ -41,12 +41,11 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.ScrollView
 import androidx.annotation.Keep
-import cn.fkj233.miui.R
+import cn.fkj233.ui.R
 import cn.fkj233.ui.activity.MIUIActivity
 import cn.fkj233.ui.activity.data.AsyncInit
 import cn.fkj233.ui.activity.dp2px
 import cn.fkj233.ui.activity.view.BaseView
-
 
 @Suppress("MemberVisibilityCanBePrivate")
 @SuppressLint("ValidFragment")
@@ -102,7 +101,8 @@ class MIUIFragment() : Fragment() {
                 setContentView(LinearLayout(context).apply {
                     layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
                     addView(ImageView(context).apply {
-                        layoutParams = LinearLayout.LayoutParams(dp2px(context, 60f), dp2px(context, 60f)).also { it.setMargins(dp2px(context, 20f), dp2px(context, 20f), dp2px(context, 20f), dp2px(context, 20f)) }
+                        layoutParams = LinearLayout.LayoutParams(dp2px(context, 60f), dp2px(context, 60f))
+                            .also { it.setMargins(dp2px(context, 20f), dp2px(context, 20f), dp2px(context, 20f), dp2px(context, 20f)) }
                         background = context.getDrawable(R.drawable.ic_loading)
                         startAnimation(AnimationSet(true).apply {
                             interpolator = LinearInterpolator()

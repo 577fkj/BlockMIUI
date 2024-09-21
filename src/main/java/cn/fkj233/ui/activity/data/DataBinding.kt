@@ -27,8 +27,8 @@ import android.view.View
 object DataBinding {
     fun get(bindingData: ArrayList<BindingData>, defValue: () -> Any, recvCallbacks: (View, Int, Any) -> Unit): BindingData {
         val binding = Binding(defValue, recvCallbacks)
-        return BindingData(binding, binding.getSend(), recvCallbacks, {
-                i -> binding.getRecv(i)
+        return BindingData(binding, binding.getSend(), recvCallbacks, { i ->
+            binding.getRecv(i)
         }, { data ->
             binding.getSend().send(data)
         }).also { bindingData.add(it) }

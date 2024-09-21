@@ -25,8 +25,8 @@ package cn.fkj233.ui.activity
 import android.content.Context
 import android.os.Bundle
 
-class MIUIHookActivity(private val moduleClassLoader: ClassLoader, private val hookAppClassLoader: ClassLoader): MIUIActivity() {
-    class FixedClassLoader(private val mModuleClassLoader: ClassLoader, private val mHostClassLoader: ClassLoader): ClassLoader(
+class MIUIHookActivity(private val moduleClassLoader: ClassLoader, private val hookAppClassLoader: ClassLoader) : MIUIActivity() {
+    class FixedClassLoader(private val mModuleClassLoader: ClassLoader, private val mHostClassLoader: ClassLoader) : ClassLoader(
         mBootstrap
     ) {
 
@@ -38,7 +38,7 @@ class MIUIHookActivity(private val moduleClassLoader: ClassLoader, private val h
             runCatching {
                 return mBootstrap.loadClass(name)
             }
-            
+
             return try {
                 mModuleClassLoader.loadClass(name)
             } catch (e: Exception) {

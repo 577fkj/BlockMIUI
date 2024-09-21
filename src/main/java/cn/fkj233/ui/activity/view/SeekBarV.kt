@@ -29,13 +29,21 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
-import cn.fkj233.miui.R
+import cn.fkj233.ui.R
 import cn.fkj233.ui.activity.MIUIActivity
 import cn.fkj233.ui.activity.data.DataBinding
 import cn.fkj233.ui.activity.dp2px
 import cn.fkj233.ui.activity.fragment.MIUIFragment
 
-class SeekBarV(val key: String = "", private val min: Int, val max: Int, private val defaultProgress: Int, private val dataSend: DataBinding.Binding.Send? = null, private val dataBindingRecv: DataBinding.Binding.Recv? = null, val callBacks: ((Int, TextView) -> Unit)? = null): BaseView {
+class SeekBarV(
+    val key: String = "",
+    private val min: Int,
+    val max: Int,
+    private val defaultProgress: Int,
+    private val dataSend: DataBinding.Binding.Send? = null,
+    private val dataBindingRecv: DataBinding.Binding.Recv? = null,
+    val callBacks: ((Int, TextView) -> Unit)? = null
+) : BaseView {
 
     override fun getType(): BaseView = this
 
@@ -78,7 +86,7 @@ class SeekBarV(val key: String = "", private val min: Int, val max: Int, private
         thiz.apply {
             group.apply {
                 addView(LinearLayout(context).apply {
-                    setPadding(dp2px(activity, 12f), 0, dp2px(activity, 12f), 0)
+                    setPadding(dp2px(context, 12f), 0, dp2px(context, 12f), 0)
                     addView(view, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT))
                 })
             }

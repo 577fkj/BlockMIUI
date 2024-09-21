@@ -39,7 +39,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.Keep
-import cn.fkj233.miui.R
+import cn.fkj233.ui.R
 import cn.fkj233.ui.activity.annotation.BMMainPage
 import cn.fkj233.ui.activity.annotation.BMMenuPage
 import cn.fkj233.ui.activity.annotation.BMPage
@@ -90,14 +90,15 @@ open class MIUIActivity : Activity() {
             background = getDrawable(R.drawable.abc_ic_ab_back_material)
             visibility = View.GONE
             setOnClickListener {
-                this@MIUIActivity.onBackPressed()
+                this@MIUIActivity.finishAfterTransition()
             }
         }
     }
 
     private val menuButton by lazy {
         ImageView(activity).apply {
-            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT).also { it.gravity = Gravity.CENTER_VERTICAL }
+            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                .also { it.gravity = Gravity.CENTER_VERTICAL }
             background = getDrawable(R.drawable.abc_ic_menu_overflow_material)
             visibility = View.GONE
             if (isRtl(context)) setPadding(dp2px(activity, 25f), 0, 0, 0)
@@ -216,7 +217,7 @@ open class MIUIActivity : Activity() {
         }
     }
 
-   open fun register(){}
+    open fun register() {}
 
     fun initAllPage() {
         pageList.forEach { (basePage, _) ->
@@ -271,10 +272,20 @@ open class MIUIActivity : Activity() {
             if (key != "Main" && fragmentManager.backStackEntryCount != 0) {
                 fragmentManager.beginTransaction().let {
                     if (key != "Menu") {
-                        if (isRtl(activity)) it.setCustomAnimations(R.animator.slide_left_in, R.animator.slide_right_out, R.animator.slide_right_in, R.animator.slide_left_out)
+                        if (isRtl(activity)) it.setCustomAnimations(
+                            R.animator.slide_left_in,
+                            R.animator.slide_right_out,
+                            R.animator.slide_right_in,
+                            R.animator.slide_left_out
+                        )
                         else it.setCustomAnimations(R.animator.slide_right_in, R.animator.slide_left_out, R.animator.slide_left_in, R.animator.slide_right_out)
                     } else {
-                        if (isRtl(activity)) it.setCustomAnimations(R.animator.slide_right_in, R.animator.slide_left_out, R.animator.slide_left_in, R.animator.slide_right_out)
+                        if (isRtl(activity)) it.setCustomAnimations(
+                            R.animator.slide_right_in,
+                            R.animator.slide_left_out,
+                            R.animator.slide_left_in,
+                            R.animator.slide_right_out
+                        )
                         else it.setCustomAnimations(R.animator.slide_left_in, R.animator.slide_right_out, R.animator.slide_right_in, R.animator.slide_left_out)
                     }
                 }.replace(frameLayoutId, frame).addToBackStack(key).commit()
@@ -296,10 +307,20 @@ open class MIUIActivity : Activity() {
         if (key != "__main__" && fragmentManager.backStackEntryCount != 0) {
             fragmentManager.beginTransaction().let {
                 if (key != "__menu__") {
-                    if (isRtl(activity)) it.setCustomAnimations(R.animator.slide_left_in, R.animator.slide_right_out, R.animator.slide_right_in, R.animator.slide_left_out)
+                    if (isRtl(activity)) it.setCustomAnimations(
+                        R.animator.slide_left_in,
+                        R.animator.slide_right_out,
+                        R.animator.slide_right_in,
+                        R.animator.slide_left_out
+                    )
                     else it.setCustomAnimations(R.animator.slide_right_in, R.animator.slide_left_out, R.animator.slide_left_in, R.animator.slide_right_out)
                 } else {
-                    if (isRtl(activity)) it.setCustomAnimations(R.animator.slide_right_in, R.animator.slide_left_out, R.animator.slide_left_in, R.animator.slide_right_out)
+                    if (isRtl(activity)) it.setCustomAnimations(
+                        R.animator.slide_right_in,
+                        R.animator.slide_left_out,
+                        R.animator.slide_left_in,
+                        R.animator.slide_right_out
+                    )
                     else it.setCustomAnimations(R.animator.slide_left_in, R.animator.slide_right_out, R.animator.slide_right_in, R.animator.slide_left_out)
                 }
             }.replace(frameLayoutId, frame).addToBackStack(key).commit()
@@ -386,7 +407,7 @@ open class MIUIActivity : Activity() {
         this.callbacks = callbacks
     }
 
-    override fun onBackPressed() {
+    override fun finishAfterTransition() {
         if (fragmentManager.backStackEntryCount <= 1) {
             if (isExit) {
                 finishAndRemoveTask()
